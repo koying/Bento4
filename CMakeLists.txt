@@ -34,6 +34,7 @@ else()
 endif()
 
 add_library(ap4 STATIC ${AP4_SOURCES})
+install (TARGETS ap4 ARCHIVE DESTINATION lib)
 
 # Includes
 include_directories(
