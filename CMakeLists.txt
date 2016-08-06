@@ -35,6 +35,7 @@ endif()
 
 add_library(ap4 STATIC ${AP4_SOURCES})
 install (TARGETS ap4 ARCHIVE DESTINATION lib)
+install (DIRECTORY Source/C++/Core/ DESTINATION include/ap4 FILES_MATCHING PATTERN "*.h")
 
 # Includes
 include_directories(
