@@ -513,8 +513,9 @@ public:
                              AP4_CencSingleSampleDecrypter*& decrypter);
     
     // methods
-    AP4_CencSingleSampleDecrypter(AP4_StreamCipher* cipher) : m_Cipher(cipher), m_FullBlocksOnly(false) {}
+    AP4_CencSingleSampleDecrypter(AP4_StreamCipher* cipher) : m_Cipher(cipher), m_FullBlocksOnly(false), m_ParentIsOwner(true) {}
     virtual ~AP4_CencSingleSampleDecrypter();
+    virtual AP4_Result SetFrameInfo(const AP4_UI16 keyid_size, const AP4_UI08* keyid, const AP4_UI08 nalu_length_size) { return AP4_ERROR_NOT_SUPPORTED; };
     virtual AP4_Result DecryptSampleData(AP4_DataBuffer& data_in,
                                          AP4_DataBuffer& data_out,
                                          
@@ -529,16 +530,21 @@ public:
                                          
                                          // array of <subsample_count> integers. NULL if subsample_count is 0
                                          const AP4_UI32* bytes_of_encrypted_data);  
-                                             
+    
+    bool GetParentIsOwner()const { return m_ParentIsOwner; };
+	void SetParentIsOwner(bool parent_is_owner){ m_ParentIsOwner = parent_is_owner; };                                         
 private:
     // constructor
     AP4_CencSingleSampleDecrypter(AP4_StreamCipher* cipher, bool full_blocks_only) :
         m_Cipher(cipher),
-        m_FullBlocksOnly(full_blocks_only) {}
+        m_FullBlocksOnly(full_blocks_only),
+        m_ParentIsOwner(true)
+        {}
 
     // members
     AP4_StreamCipher* m_Cipher;
     bool              m_FullBlocksOnly;
+    bool			  m_ParentIsOwner;
 };
 
 /*----------------------------------------------------------------------

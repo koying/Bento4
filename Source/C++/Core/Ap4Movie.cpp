@@ -106,6 +106,15 @@ AP4_Movie::AP4_Movie(AP4_MoovAtom* moov, AP4_ByteStream& sample_stream, bool tra
         time_scale = 0;
     }
 
+	// get the pssh atoms
+	AP4_List<AP4_PsshAtom>* pssh_atoms;
+	pssh_atoms = &moov->GetPsshAtoms();
+	AP4_List<AP4_PsshAtom>::Item* pssh_item = pssh_atoms->FirstItem();
+	while (pssh_item) {
+		m_PsshAtoms.Append(new AP4_PsshAtom(*pssh_item->GetData()));
+		pssh_item = pssh_item->GetNext();
+	}
+
     // get all tracks
     AP4_List<AP4_TrakAtom>* trak_atoms;
     trak_atoms = &moov->GetTrakAtoms();

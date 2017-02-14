@@ -1,6 +1,6 @@
 /*****************************************************************
 |
-|    AP4 - Movie 
+|    AP4 - Movie
 |
 |    Copyright 2002-2008 Axiomatic Systems, LLC
 |
@@ -35,6 +35,7 @@
 #include "Ap4Types.h"
 #include "Ap4MoovAtom.h"
 #include "Ap4MvhdAtom.h"
+#include "Ap4PsshAtom.h"
 #include "Ap4Track.h"
 #include "Ap4List.h"
 
@@ -59,6 +60,7 @@ public:
     AP4_MoovAtom* GetMoovAtom() { return m_MoovAtom;}
     void SetMoovAtom(AP4_MoovAtom* atom) { m_MoovAtom = atom; }
     AP4_MvhdAtom* GetMvhdAtom() { return m_MvhdAtom;}
+    AP4_Array<AP4_PsshAtom*>& GetPsshAtoms()   { return m_PsshAtoms; }
     AP4_List<AP4_Track>& GetTracks() { return m_Tracks; }
     AP4_Track*   GetTrack(AP4_UI32 track_id);
     AP4_Track*   GetTrack(AP4_Track::Type type, AP4_Ordinal index = 0);
@@ -67,12 +69,13 @@ public:
     AP4_UI64     GetDuration();
     AP4_UI32     GetDurationMs();
     bool         HasFragments();
-    
+
 private:
     // members
     AP4_MoovAtom*       m_MoovAtom;
     bool                m_MoovAtomIsOwned;
     AP4_MvhdAtom*       m_MvhdAtom;
+    AP4_Array<AP4_PsshAtom*> m_PsshAtoms;
     AP4_List<AP4_Track> m_Tracks;
 };
 

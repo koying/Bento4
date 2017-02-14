@@ -1,6 +1,6 @@
 /*****************************************************************
 |
-|    AP4 - moov Atoms 
+|    AP4 - moov Atoms
 |
 |    Copyright 2002-2008 Axiomatic Systems, LLC
 |
@@ -40,6 +40,7 @@
 +---------------------------------------------------------------------*/
 class AP4_AtomFactory;
 class AP4_TrakAtom;
+class AP4_PsshAtom;
 
 /*----------------------------------------------------------------------
 |   AP4_MoovAtom
@@ -61,11 +62,16 @@ public:
     AP4_List<AP4_TrakAtom>& GetTrakAtoms() {
         return m_TrakAtoms;
     }
+	AP4_Result AddTrakAtoms(AP4_List<AP4_TrakAtom>& atoms, AP4_List<AP4_TrakAtom>::Item* &first_item);
+
+	AP4_List<AP4_PsshAtom>& GetPsshAtoms() {
+		return m_PsshAtoms;
+	}
     AP4_UI32 GetTimeScale() {
         return m_TimeScale;
     }
     AP4_Result AdjustChunkOffsets(AP4_SI64 offset);
-    
+
     // AP4_AtomParent methods
     void OnChildAdded(AP4_Atom* atom);
     void OnChildRemoved(AP4_Atom* atom);
@@ -78,6 +84,7 @@ private:
 
     // members
     AP4_List<AP4_TrakAtom> m_TrakAtoms;
+    AP4_List<AP4_PsshAtom> m_PsshAtoms;    
     AP4_UI32               m_TimeScale;
 };
 
