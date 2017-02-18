@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -19,12 +19,12 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v110</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -47,7 +47,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>..\..\..\..\Source\C++\Config;..\..\..\..\Source\C++\Core;..\..\..\..\Source\C++\Codecs;..\..\..\..\Source\C++\MetaData;..\..\..\..\Source\C++\Crypto;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>WIN32;_DEBUG;AP4_DEBUG;_LIB;AP4_PLATFORM_BYTE_ORDER=AP4_PLATFORM_BYTE_ORDER_LITTLE_ENDIAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;AP4_DEBUG;_LIB;AP4_PLATFORM_BYTE_ORDER=AP4_PLATFORM_BYTE_ORDER_LITTLE_ENDIAN;_DEBUG;_HAS_ITERATOR_DEBUGGING=0;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <MinimalRebuild>true</MinimalRebuild>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -94,6 +94,7 @@
     <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4CommonEncryption.cpp" />
     <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4Dec3Atom.cpp" />
     <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4HvccAtom.cpp" />
+    <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4DvccAtom.cpp" />
     <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4PsshAtom.cpp" />
     <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4SaioAtom.cpp" />
     <ClCompile Include="..\..\..\..\Source\C++\Core\Ap4SaizAtom.cpp" />
@@ -220,6 +221,7 @@
     <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4CommonEncryption.h" />
     <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4Dec3Atom.h" />
     <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4HvccAtom.h" />
+    <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4DvccAtom.h" />
     <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4PsshAtom.h" />
     <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4SaioAtom.h" />
     <ClInclude Include="..\..\..\..\Source\C++\Core\Ap4SaizAtom.h" />
