@@ -583,9 +583,11 @@ public:
     
     // methods
     AP4_CencSampleDecrypter(AP4_CencSingleSampleDecrypter* single_sample_decrypter,
-                            AP4_CencSampleInfoTable*       sample_info_table) :
+                            AP4_CencSampleInfoTable*       sample_info_table,
+                            bool                           own_decrypter = true) :
         m_SingleSampleDecrypter(single_sample_decrypter),
         m_SampleInfoTable(sample_info_table),
+        m_OwnDecrypter(own_decrypter),
         m_SampleCursor(0) {}
     virtual ~AP4_CencSampleDecrypter();
     virtual AP4_Result SetSampleIndex(AP4_Ordinal sample_index);
@@ -596,6 +598,7 @@ public:
 protected:
     AP4_CencSingleSampleDecrypter* m_SingleSampleDecrypter;
     AP4_CencSampleInfoTable*       m_SampleInfoTable;
+    bool                           m_OwnDecrypter;
     AP4_Ordinal                    m_SampleCursor;
 };
 
