@@ -121,6 +121,14 @@ AP4_MoovAtom::OnChildAdded(AP4_Atom* atom)
         }
     }
 
+    // keep the atom in the list of pssh atoms
+    if (atom->GetType() == AP4_ATOM_TYPE_PSSH) {
+      AP4_PsshAtom* pssh = AP4_DYNAMIC_CAST(AP4_PsshAtom, atom);
+      if (pssh) {
+        m_PsshAtoms.Add(pssh);
+      }
+    }
+
     // call the base class implementation
     AP4_ContainerAtom::OnChildAdded(atom);
 }
@@ -137,6 +145,14 @@ AP4_MoovAtom::OnChildRemoved(AP4_Atom* atom)
         if (trak) {
             m_TrakAtoms.Remove(trak);
         }
+    }
+
+    // remove the atom from the list of pssh atoms
+    if (atom->GetType() == AP4_ATOM_TYPE_PSSH) {
+      AP4_PsshAtom* pssh = AP4_DYNAMIC_CAST(AP4_PsshAtom, atom);
+      if (pssh) {
+        m_PsshAtoms.Remove(pssh);
+      }
     }
 
     // call the base class implementation
