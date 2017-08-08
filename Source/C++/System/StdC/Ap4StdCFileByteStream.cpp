@@ -29,10 +29,6 @@
 /*----------------------------------------------------------------------
 |   includes
 +---------------------------------------------------------------------*/
-#define _LARGEFILE_SOURCE
-#define _LARGEFILE_SOURCE64
-#define _FILE_OFFSET_BITS 64
-
 #include <stdio.h>
 #include <string.h>
 #if !defined(_WIN32_WCE)
